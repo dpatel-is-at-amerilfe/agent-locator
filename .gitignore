@@ -41,6 +41,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+codelab-maps-platform-101-react-js\starter\node_modules
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
