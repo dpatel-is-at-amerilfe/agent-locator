@@ -1,1 +1,7 @@
-command: ["npm", "run", "dev", "--", "--port", "$DATABRICKS_APP_PORT", "--host"]
+command: ["sh", "-c", "npm run build && ./node_modules/.bin/vite preview --port $DATABRICKS_APP_PORT --host 0.0.0.0"]
+
+env:
+  - name: VITE_GOOGLE_MAPS_API_KEY
+    value: "AIzaSyC8abDRrVaYbvc-9W8gO3AD0q9NL1L8mWk"
+  - name: VITE_GOOGLE_MAPS_MAP_ID
+    value: "d81e75818680a4faab8e9c3a"
