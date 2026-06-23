@@ -22,7 +22,6 @@ import {
   useImperativeHandle,
   useRef
 } from 'react';
-
 import type {Ref} from 'react';
 import {GoogleMapsContext, latLngEquals} from '@vis.gl/react-google-maps';
 
