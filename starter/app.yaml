@@ -1,0 +1,1 @@
+command: ["npm", "run", "dev", "--", "--port", "$DATABRICKS_APP_PORT", "--host"]
