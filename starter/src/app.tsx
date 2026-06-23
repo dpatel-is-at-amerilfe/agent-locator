@@ -112,7 +112,7 @@ function Avatar({ agent, size = 40 }: { agent: Agent; size?: number }) {
   );
 }
 
-// --- Map: pill marker (replaces <Pin>) --------------------------------------
+// --- Map: pill marker (agent pins) --------------------------------------
 interface PillProps {
   agent: Agent;
   active: boolean;
@@ -333,7 +333,7 @@ function App() {
   const filtered = useMemo<Agent[]>(() => {
     const q = query.trim().toLowerCase();
     return AGENTS.filter((a) => {
-      if (q && !(a.name.toLowerCase().includes(q) || a.zip.includes(q))) return false;
+      if (q && !(a.name.toLowerCase().includes(q) || a.zip.includes(q) || a.country.toLowerCase().includes(q))) return false;
       if (verifiedOnly && !a.verified) return false;
       if (stateFilter && a.state !== stateFilter) return false;
       if (industryFilter && !(a.industries ?? []).includes(industryFilter)) return false;
@@ -413,7 +413,7 @@ function App() {
             <input
               className="search__input"
               type="search"
-              placeholder="Search by name or ZIP"
+              placeholder="Search by name, ZIP, or country"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               autoComplete="off"

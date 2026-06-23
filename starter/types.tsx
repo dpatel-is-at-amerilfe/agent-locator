@@ -7,6 +7,7 @@ interface Agent {
   city: string;
   state: string;
   zip: string;
+  country: string;
   lat: number;
   lng: number;
   verified?: boolean;

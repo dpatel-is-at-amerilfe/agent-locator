@@ -1,4 +1,24 @@
-export const sample_agents_dataset = [
+/**
+ * Sample dataset — synthetic, no real agent PII.
+ * Structure: your 135 Florida agents (unchanged) + national (other US states)
+ * + international agents. Every record now carries a `country` field.
+ *
+ * The Florida block keeps your exact records; `country: 'United States'` is
+ * injected via .map() so you didn't have to touch 135 lines by hand.
+ */
+export interface SampleAgent {
+  id: string;
+  name: string;
+  title: string;
+  city: string;
+  state: string;   // US state, or province/region for international
+  zip: string;     // US ZIP, or postal code for international
+  country: string;
+  lat: number;
+  lng: number;
+}
+
+const florida: Omit<SampleAgent, 'country'>[] = [
   { id: 'a1'  , name: 'John Smith'       , title: 'Insurance Agent'         , city: 'Tampa'          , state: 'FL', zip: '33602', lat: 27.9506, lng: -82.4572 },
   { id: 'a2'  , name: 'Sarah Jones'      , title: 'Senior Agent'            , city: 'Orlando'        , state: 'FL', zip: '32801', lat: 28.5383, lng: -81.3792 },
   { id: 'a3'  , name: 'Michael Brown'    , title: 'Regional Manager'        , city: 'Miami'          , state: 'FL', zip: '33101', lat: 25.7617, lng: -80.1918 },
@@ -134,4 +154,64 @@ export const sample_agents_dataset = [
   { id: 'a133', name: 'Karen Miller'     , title: 'Producer'                , city: 'Deltona'        , state: 'FL', zip: '32725', lat: 28.9029, lng: -81.2508 },
   { id: 'a134', name: 'Amanda Harris'    , title: 'Sales Agent'             , city: 'Deltona'        , state: 'FL', zip: '32725', lat: 28.8974, lng: -81.2572 },
   { id: 'a135', name: 'Sharon Rivera'    , title: 'Senior Sales Agent'      , city: 'Deltona'        , state: 'FL', zip: '32725', lat: 28.9104, lng: -81.2714 },
+];
+
+// National — other US states.
+const national: SampleAgent[] = [
+  { id: 'n1' , name: 'Olivia Bennett'  , title: 'Regional Sales Manager'  , city: 'New York'      , state: 'NY', zip: '10001', country: 'United States', lat: 40.7128 , lng: -74.0060 },
+  { id: 'n2' , name: 'Daniel Wu'       , title: 'Insurance Agent'         , city: 'Brooklyn'      , state: 'NY', zip: '11201', country: 'United States', lat: 40.6940 , lng: -73.9903 },
+  { id: 'n3' , name: 'Sophia Martinez' , title: 'Agency Director'         , city: 'Los Angeles'   , state: 'CA', zip: '90012', country: 'United States', lat: 34.0537 , lng: -118.2428 },
+  { id: 'n4' , name: 'Ethan Clark'     , title: 'Senior Account Executive', city: 'San Diego'     , state: 'CA', zip: '92101', country: 'United States', lat: 32.7157 , lng: -117.1611 },
+  { id: 'n5' , name: 'Grace Kim'       , title: 'Producer'                , city: 'Chicago'       , state: 'IL', zip: '60601', country: 'United States', lat: 41.8857 , lng: -87.6228 },
+  { id: 'n6' , name: 'Mason Reed'      , title: 'Branch Sales Manager'    , city: 'Houston'       , state: 'TX', zip: '77002', country: 'United States', lat: 29.7589 , lng: -95.3677 },
+  { id: 'n7' , name: 'Ava Patel'       , title: 'Life Insurance Agent'    , city: 'Dallas'        , state: 'TX', zip: '75201', country: 'United States', lat: 32.7876 , lng: -96.7990 },
+  { id: 'n8' , name: 'Liam Foster'     , title: 'Territory Manager'       , city: 'Austin'        , state: 'TX', zip: '78701', country: 'United States', lat: 30.2711 , lng: -97.7437 },
+  { id: 'n9' , name: 'Isabella Cruz'   , title: 'Sales Representative'    , city: 'Phoenix'       , state: 'AZ', zip: '85004', country: 'United States', lat: 33.4504 , lng: -112.0731 },
+  { id: 'n10', name: 'Noah Bauer'      , title: 'Insurance Broker'        , city: 'Denver'        , state: 'CO', zip: '80202', country: 'United States', lat: 39.7487 , lng: -104.9963 },
+  { id: 'n11', name: 'Mia Sanders'     , title: 'Health Insurance Agent'  , city: 'Seattle'       , state: 'WA', zip: '98101', country: 'United States', lat: 47.6101 , lng: -122.3344 },
+  { id: 'n12', name: 'James Carter'    , title: 'Agency Director'         , city: 'Atlanta'       , state: 'GA', zip: '30303', country: 'United States', lat: 33.7527 , lng: -84.3915 },
+  { id: 'n13', name: 'Charlotte Hughes', title: 'Senior Sales Agent'      , city: 'Boston'        , state: 'MA', zip: '02108', country: 'United States', lat: 42.3582 , lng: -71.0637 },
+  { id: 'n14', name: 'Benjamin Ross'   , title: 'Account Executive'       , city: 'Philadelphia'  , state: 'PA', zip: '19103', country: 'United States', lat: 39.9526 , lng: -75.1652 },
+  { id: 'n15', name: 'Amelia Brooks'   , title: 'Field Sales Agent'       , city: 'Charlotte'     , state: 'NC', zip: '28202', country: 'United States', lat: 35.2271 , lng: -80.8431 },
+  { id: 'n16', name: 'Lucas Price'     , title: 'District Sales Manager'  , city: 'Nashville'     , state: 'TN', zip: '37203', country: 'United States', lat: 36.1518 , lng: -86.7916 },
+  { id: 'n17', name: 'Harper Diaz'     , title: 'Licensed Sales Producer' , city: 'Las Vegas'     , state: 'NV', zip: '89101', country: 'United States', lat: 36.1716 , lng: -115.1391 },
+  { id: 'n18', name: 'Henry Walsh'     , title: 'Producer'                , city: 'Minneapolis'   , state: 'MN', zip: '55401', country: 'United States', lat: 44.9778 , lng: -93.2650 },
+  { id: 'n19', name: 'Ella Romano'     , title: 'Senior Insurance Agent'  , city: 'Detroit'       , state: 'MI', zip: '48226', country: 'United States', lat: 42.3314 , lng: -83.0458 },
+  { id: 'n20', name: 'Jack Nguyen'     , title: 'Regional Manager'        , city: 'Portland'      , state: 'OR', zip: '97204', country: 'United States', lat: 45.5152 , lng: -122.6784 },
+  { id: 'n21', name: 'Scarlett Adams'  , title: 'Sales Team Lead'         , city: 'Columbus'      , state: 'OH', zip: '43215', country: 'United States', lat: 39.9612 , lng: -82.9988 },
+  { id: 'n22', name: 'Owen Castro'     , title: 'Insurance Agent'         , city: 'Kansas City'   , state: 'MO', zip: '64106', country: 'United States', lat: 39.0997 , lng: -94.5786 },
+  { id: 'n23', name: 'Lily Hayes'      , title: 'Territory Manager'       , city: 'Salt Lake City', state: 'UT', zip: '84101', country: 'United States', lat: 40.7608 , lng: -111.8910 },
+  { id: 'n24', name: 'Caleb Morgan'    , title: 'Agency Producer'         , city: 'New Orleans'   , state: 'LA', zip: '70112', country: 'United States', lat: 29.9511 , lng: -90.0715 },
+];
+
+// International — other countries (state field holds province/region).
+const international: SampleAgent[] = [
+  { id: 'i1' , name: 'Emma Thompson'   , title: 'Agency Director'         , city: 'Toronto'      , state: 'ON'              , zip: 'M5H 2N2'  , country: 'Canada'        , lat: 43.6532 , lng: -79.3832 },
+  { id: 'i2' , name: 'Liam Tremblay'   , title: 'Insurance Broker'        , city: 'Vancouver'    , state: 'BC'              , zip: 'V6B 1A1'  , country: 'Canada'        , lat: 49.2827 , lng: -123.1207 },
+  { id: 'i3' , name: 'Valeria Ramirez' , title: 'Regional Sales Manager'  , city: 'Mexico City'  , state: 'CDMX'            , zip: '06000'    , country: 'Mexico'        , lat: 19.4326 , lng: -99.1332 },
+  { id: 'i4' , name: 'Oliver Bennett'  , title: 'Senior Account Executive', city: 'London'       , state: 'England'         , zip: 'EC1A 1BB' , country: 'United Kingdom', lat: 51.5074 , lng: -0.1278 },
+  { id: 'i5' , name: 'Sophie Clarke'   , title: 'Sales Representative'    , city: 'Manchester'   , state: 'England'         , zip: 'M1 1AE'   , country: 'United Kingdom', lat: 53.4808 , lng: -2.2426 },
+  { id: 'i6' , name: 'Conor Murphy'    , title: 'Insurance Agent'         , city: 'Dublin'       , state: 'Leinster'        , zip: 'D01 F5P2' , country: 'Ireland'       , lat: 53.3498 , lng: -6.2603 },
+  { id: 'i7' , name: 'Camille Laurent' , title: 'Producer'                , city: 'Paris'        , state: 'Île-de-France'   , zip: '75001'    , country: 'France'        , lat: 48.8566 , lng: 2.3522 },
+  { id: 'i8' , name: 'Lukas Becker'    , title: 'Agency Director'         , city: 'Berlin'       , state: 'Berlin'          , zip: '10115'    , country: 'Germany'       , lat: 52.5200 , lng: 13.4050 },
+  { id: 'i9' , name: 'Lucia Fernandez' , title: 'Territory Manager'       , city: 'Madrid'       , state: 'Madrid'          , zip: '28013'    , country: 'Spain'         , lat: 40.4168 , lng: -3.7038 },
+  { id: 'i10', name: 'Daan de Vries'   , title: 'Senior Insurance Agent'  , city: 'Amsterdam'    , state: 'North Holland'   , zip: '1012'     , country: 'Netherlands'   , lat: 52.3676 , lng: 4.9041 },
+  { id: 'i11', name: 'Mateus Oliveira' , title: 'Regional Manager'        , city: 'Sao Paulo'    , state: 'SP'              , zip: '01310-100', country: 'Brazil'        , lat: -23.5505, lng: -46.6333 },
+  { id: 'i12', name: 'Sofia Gimenez'   , title: 'Sales Team Lead'         , city: 'Buenos Aires' , state: 'CABA'            , zip: 'C1001'    , country: 'Argentina'     , lat: -34.6037, lng: -58.3816 },
+  { id: 'i13', name: 'Aisha Al-Farsi'  , title: 'Account Executive'       , city: 'Dubai'        , state: 'Dubai'           , zip: '00000'    , country: 'United Arab Emirates', lat: 25.2048, lng: 55.2708 },
+  { id: 'i14', name: 'Rohan Mehta'     , title: 'Insurance Agent'         , city: 'Mumbai'       , state: 'Maharashtra'     , zip: '400001'   , country: 'India'         , lat: 19.0760 , lng: 72.8777 },
+  { id: 'i15', name: 'Priya Iyer'      , title: 'Field Sales Agent'       , city: 'Bengaluru'    , state: 'Karnataka'       , zip: '560001'   , country: 'India'         , lat: 12.9716 , lng: 77.5946 },
+  { id: 'i16', name: 'Wei Tan'         , title: 'Senior Sales Agent'      , city: 'Singapore'    , state: 'Central'         , zip: '018989'   , country: 'Singapore'     , lat: 1.3521  , lng: 103.8198 },
+  { id: 'i17', name: 'Yuki Tanaka'     , title: 'Branch Sales Manager'    , city: 'Tokyo'        , state: 'Tokyo'           , zip: '100-0001' , country: 'Japan'         , lat: 35.6762 , lng: 139.6503 },
+  { id: 'i18', name: 'Charlotte Wilson', title: 'District Sales Manager'  , city: 'Sydney'       , state: 'NSW'             , zip: '2000'     , country: 'Australia'     , lat: -33.8688, lng: 151.2093 },
+  { id: 'i19', name: 'Jack Robinson'   , title: 'Producer'                , city: 'Melbourne'    , state: 'VIC'             , zip: '3000'     , country: 'Australia'     , lat: -37.8136, lng: 144.9631 },
+  { id: 'i20', name: 'Thabo Nkosi'     , title: 'Agency Producer'         , city: 'Johannesburg' , state: 'Gauteng'         , zip: '2000'     , country: 'South Africa'  , lat: -26.2041, lng: 28.0473 },
+  { id: 'i21', name: 'Wai Chan'        , title: 'Licensed Sales Producer' , city: 'Hong Kong'    , state: 'Hong Kong'       , zip: '999077'   , country: 'Hong Kong'     , lat: 22.3193 , lng: 114.1694 },
+  { id: 'i22', name: 'Min-jun Park'    , title: 'Senior Account Executive', city: 'Seoul'        , state: 'Seoul'           , zip: '04524'    , country: 'South Korea'   , lat: 37.5665 , lng: 126.9780 },
+];
+
+export const sample_agents_dataset: SampleAgent[] = [
+  ...florida.map((a) => ({ ...a, country: 'United States' })),
+  ...national,
+  ...international,
 ];
